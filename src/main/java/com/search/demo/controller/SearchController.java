@@ -1,6 +1,7 @@
 package com.search.demo.controller;
 
 import com.search.demo.service.SearchService;
+import com.search.demo.controller.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
