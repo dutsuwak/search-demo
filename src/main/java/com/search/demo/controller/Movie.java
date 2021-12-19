@@ -22,7 +22,7 @@ public class Movie {
     }
 
     public Movie(String name, String year, String rate, String votes, String genre, String duration,
-                 String certificate, String type, String episodes, String nudity, String violence,
+                 String type, String certificate, String episodes, String nudity, String violence,
                  String profanity, String alcohol, String frightening){
 
         this.name = name;

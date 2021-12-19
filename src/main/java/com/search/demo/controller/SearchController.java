@@ -28,8 +28,6 @@ public class SearchController {
         // Load file as Resource
         Resource resource = searchService.searchByTitle(titleName);
 
-        System.out.println(titleName);
-
         // Determine file's content type
         String contentType = "text/html";
 
