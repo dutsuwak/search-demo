@@ -4,13 +4,22 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "file")
 public class SearchProperties {
-    private String searchDirectory;
+    private String searchFilename;
+    private String searchFramework;
 
-    public String getSearchDirectory() {
-        return searchDirectory;
+    public String getSearchFilename() {
+        return searchFilename;
     }
 
-    public void setSearchDirectory(String searchDirectory) {
-        this.searchDirectory = searchDirectory;
+    public void setSearchFilename(String searchFilename) {
+        this.searchFilename = searchFilename;
+    }
+
+    public String getSearchFramework() {
+        return searchFramework;
+    }
+
+    public void setSearchFramework(String searchFramework) {
+        this.searchFramework = searchFramework;
     }
 }

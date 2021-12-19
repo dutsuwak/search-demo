@@ -2,6 +2,7 @@ package com.search.demo.controller;
 
 import com.search.demo.service.SearchService;
 import com.search.demo.controller.Movie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -17,11 +18,15 @@ public class SearchController {
     @Autowired
     private SearchService searchService;
 
+    public SearchController(){
+        System.out.println("Init");
+    }
+
     //@GetMapping("/downloadFile/{titleName:.+}")
     @GetMapping("/search/{titleName:.+}")
-    public ResponseEntity<Resource> search(@PathVariable String titleName, HttpServletRequest request) {
+    public ResponseEntity<Resource> searchByTitle(@PathVariable String titleName, HttpServletRequest request) {
         // Load file as Resource
-        Resource resource = searchService.loadFileAsResource(titleName);
+        Resource resource = searchService.searchByTitle(titleName);
 
         System.out.println(titleName);
 
