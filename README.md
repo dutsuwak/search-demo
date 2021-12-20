@@ -74,12 +74,12 @@ v. All below
 2. All titles of a given genre in a particular rate range from the previous step (i.e. all dramas
 where the rate is between 6 and 8).
 
-![Requirement BC](./rsrc/imgs/req_a.gif?raw=true "Requirement B-C Example Usage")
+![Requirement BC](./rsrc/imgs/req_b_c.gif?raw=true "Requirement B-C Example Usage")
 
 ### Requirement D
 Add a “Did you mean?” feature in the endpoint created in step a.
 
-![Requirement D](./rsrc/imgs/req_a.gif?raw=true "Requirement D Example Usage")
+![Requirement D](./rsrc/imgs/req_d.gif?raw=true "Requirement D Example Usage")
 
 ### Requirement E
 Optional search parameters. What happens if you want to query only but range no matter the rate?
