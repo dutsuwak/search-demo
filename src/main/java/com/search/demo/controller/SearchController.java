@@ -18,16 +18,9 @@ public class SearchController {
     @Autowired
     private SearchService searchService;
 
-    public SearchController(){
-        System.out.println("Init");
-    }
-
     @GetMapping("/searchByTitle/{titleName:.+}")
     public ResponseEntity<Resource> searchByTitle(@PathVariable String titleName, HttpServletRequest request) {
-        // Load file as Resource
         Resource resource = searchService.searchByTitle(titleName);
-
-        // Determine file's content type
         String contentType = "text/html";
 
         return ResponseEntity.ok()
@@ -38,10 +31,18 @@ public class SearchController {
 
     @GetMapping("/searchByGenre/{genreName:.+}")
     public ResponseEntity<Resource> searchByGenre(@PathVariable String genreName, HttpServletRequest request) {
-        // Load file as Resource
         Resource resource = searchService.searchByGenre(genreName);
+        String contentType = "text/html";
 
-        // Determine file's content type
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "text/html; \"" + resource.toString() + "\"")
+                .body(resource);
+    }
+
+    @GetMapping("/searchByRate/{low:.+}/{high:.+}")
+    public ResponseEntity<Resource> searchByGenre(@PathVariable String low, @PathVariable String high, HttpServletRequest request) {
+        Resource resource = searchService.searchByRate(Integer.parseInt(low), Integer.parseInt(high));
         String contentType = "text/html";
 
         return ResponseEntity.ok()

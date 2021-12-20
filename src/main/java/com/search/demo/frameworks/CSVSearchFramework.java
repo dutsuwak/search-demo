@@ -76,6 +76,19 @@ public class CSVSearchFramework implements iSearchFramework {
     public List<Movie> searchByRate(int low, int high){
         List<Movie> mlist = new ArrayList<Movie>();
 
+        for(Movie movie : this.movies){
+            float movieRate;
+            if(movie.getRate().contains("No Rate")){
+                movieRate = 0;
+            }
+            else{
+                movieRate = Float.parseFloat(movie.getRate());
+            }
+            if(movieRate >= low && movieRate < high){
+                mlist.add(movie);
+            }
+        }
+
         return mlist;
     };
 
