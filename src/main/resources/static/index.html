@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <title>Search REST API Demo</title>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body>
+        <div class="search-container">
+            <div class="search-header">
+                <h2>Search REST API Demo</h2>
+                <button onclick="resetForms()" class="primary submit-btn">Reset</button>
+            </div>
+            <div class="search-content">
+                <div class="single-search">
+                    <h3>Search Title by Name</h3>
+                    <form id="singleSearchForm" name="singleSearchForm">
+                        <input id="searchInput" type="text" name="file" placeholder="Movie Title"/>
+                        <button type="submit" class="primary submit-btn">Submit</button>
+                    </form>
+                    <div class="search-response" id="results">
+                    </div>
+                    
+                    <div style="width: 100%; display: table;">
+                        <div style="display: table-row">
+                            <div style="width: 50%; display: table-cell;">
+                                <table id="resultsTable" class="tg" style="display: none;">
+                                    <thead>
+                                    <tr>
+                                        <th class="tg-b3sw">Name</th>
+                                        <th class="tg-0lax" id="tMovieName"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="tg-b3sw">Date</td>
+                                        <td class="tg-0lax" id="tMovieDate"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Rate</td>
+                                        <td class="tg-0lax" id="tMovieRate"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Votes</td>
+                                        <td class="tg-0lax" id="tMovieVotes"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Genre</td>
+                                        <td class="tg-0lax" id="tMovieGenre"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Duration</td>
+                                        <td class="tg-0lax" id="tMovieDuration"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Type</td>
+                                        <td class="tg-0lax" id="tMovieType"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Certificate</td>
+                                        <td class="tg-0lax" id="tMovieCertificate"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Episodes</td>
+                                        <td class="tg-0lax" id="tMovieEpisodes"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Nudity</td>
+                                        <td class="tg-0lax" id="tMovieNudity"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Violence</td>
+                                        <td class="tg-0lax" id="tMovieViolence"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Profanity</td>
+                                        <td class="tg-0lax" id="tMovieProfanity"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Alcohol</td>
+                                        <td class="tg-0lax" id="tMovieAlcohol"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-b3sw">Frightening</td>
+                                        <td class="tg-0lax" id="tMovieFrightening"></td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="single-search">
+                    <h3>Search by Rate</h3>
+                    <form id="rateSearchForm" name="rateSearchForm">
+                        <input id="rateGenreSearchInput" type="text" name="file" placeholder="Optional Genre"/>
+                        <select name="rateSearchInput" id="rateSearchInput">
+                            <option value="0">8+</option>
+                            <option value="1">6-8</option>
+                            <option value="2">4-6</option>
+                            <option value="3">2-4</option>
+                            <option value="4">1-</option>
+                        </select>
+                        <button type="submit" class="primary submit-btn">Submit</button>
+                    </form>
+                    <div style="width: 100%;">
+                        <div id="byRateTable" style="margin-top: 10px;"></div>
+                    </div>
+                </div>
+
+                <div class="single-search">
+                    <h3>Search by Genre</h3>
+                    <form id="genreSearchForm" name="genreSearchForm">
+                        <input id="genreSearchInput" type="text" name="file" placeholder="Genre"/>
+                        <button type="submit" class="primary submit-btn">Submit</button>
+                    </form>
+                    <div style="width: 100%;">
+                        <div id="byGenreTable" style="margin-top: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/main.js" ></script>
+    </body>
+</html>
