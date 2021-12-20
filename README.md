@@ -15,6 +15,20 @@
 
 ## Execution Instructions
 
+### Download the code
+
+1. Use git clone to retrieve the repo
+
+```bash
+git clone https://github.com/fasm22/search-demo.git
+```
+
+2. Change the directory the downloaded repo
+
+```bash
+cd search-demo
+```
+
 ### Build the code
 1. Usually Maven installation from packages manager such as in Ubuntu distributions comes preconfigured for Java 1.8. Set required environment variable.
 
