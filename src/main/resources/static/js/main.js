@@ -1,9 +1,16 @@
 'use strict';
 
+/* Define queries form selectors */
 var singleSearchForm = document.querySelector('#singleSearchForm');
 var genreSearchForm = document.querySelector('#genreSearchForm');
 var rateSearchForm = document.querySelector('#rateSearchForm');
 
+/*
+*   Call the rest API to search a movie/series by Title
+*   If no exact match is found return a suggestion
+*
+*   @param pTitle the string to search for 
+*/
 function searchByTitle(pTitle) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -38,6 +45,11 @@ function searchByTitle(pTitle) {
     xhttp.send();
 }
 
+/*
+*   Creates a link on the interface with a name suggestion
+*
+*   @param pTitle the string to search for 
+*/
 function suggestMovieName(pMovieName){
     var resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = "";
@@ -45,11 +57,8 @@ function suggestMovieName(pMovieName){
     var suggestedMovie = document.createElement("LABEL");
     suggestedMovie.innerHTML = "Did you mean: ";
 
-
     var a = document.createElement('a'); 
     var link = document.createTextNode(pMovieName);
-        
-    // Append the text node to anchor element.
     a.appendChild(link); 
     a.title = pMovieName; 
     a.href = "#"; 
@@ -64,6 +73,11 @@ function suggestMovieName(pMovieName){
     resultsDiv.appendChild(a);
 }
 
+/*
+*   Call the rest API to search a movie/series by Genre
+*
+*   @param pGenre the string to search for 
+*/
 function searchByGenre(pGenre) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -79,6 +93,14 @@ function searchByGenre(pGenre) {
     xhttp.send();
 }
 
+/*
+*   Call the rest API to search a movie/series by Rate
+*   The low and high rate values are needed
+*
+*   @param pLow minimum rate value 
+*   @param pHigh maximum rate value 
+*   @param pGenre optional Genre filter 
+*/
 function searchByRate(pLow, pHigh, pGenre) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -94,8 +116,15 @@ function searchByRate(pLow, pHigh, pGenre) {
     xhttp.send();
 }
 
+/*
+*   Updates the div results and creates a new table
+*   based on the input table name to identify correct interface.
+*
+*   @param pMovies array of movies to be added to the table 
+*   @param pQuery the rate or range that is being selected 
+*   @param pTableName the name of the table that is being selected 
+*/
 function generateTable(pMovies, pQuery, pTableName) {
-    //Build an array containing Customer records.
     var tableMovies = new Array();
     tableMovies.push(["Name","Date","Rate","Votes","Genre","Duration","Type",
                       "Certificate","Episodes","Nudity","Violence","Profanity",
@@ -111,14 +140,11 @@ function generateTable(pMovies, pQuery, pTableName) {
         }
     }
 
-    //Create a HTML Table element.
     var table = document.createElement("TABLE");
     table.border = "1";
-
-    //Get the count of columns.
     var columnCount = tableMovies[0].length;
 
-    //Add the header row.
+    //Add the header row
     var row = table.insertRow(-1);
     for (var i = 0; i < columnCount; i++) {
         var headerCell = document.createElement("TH");
@@ -126,7 +152,7 @@ function generateTable(pMovies, pQuery, pTableName) {
         row.appendChild(headerCell);
     }
 
-    //Add the data rows.
+    //Add the data rows
     for (var i = 1; i < tableMovies.length; i++) {
         row = table.insertRow(-1);
         for (var j = 0; j < columnCount; j++) {
@@ -147,6 +173,9 @@ function generateTable(pMovies, pQuery, pTableName) {
 
 }
 
+/*
+*   Resets all the input from the user and the output results
+*/
 function resetForms() {
     document.getElementById("resultsTable").style.display = "none";
     document.getElementById("searchInput").value = "";
@@ -157,6 +186,7 @@ function resetForms() {
     document.getElementById("results").innerHTML = "";
 }
 
+/* Form listeners */
 singleSearchForm.addEventListener('submit', function(event){
     var searchText = document.getElementById("searchInput").value;
 
