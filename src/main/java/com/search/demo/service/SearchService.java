@@ -2,6 +2,7 @@ package com.search.demo.service;
 
 import com.search.demo.controller.Movie;
 import com.search.demo.frameworks.CSVSearchFramework;
+import com.search.demo.frameworks.ElasticSearchFramework;
 import com.search.demo.frameworks.iSearchFramework;
 import com.search.demo.property.SearchProperties;
 
@@ -34,7 +35,8 @@ public class SearchService {
                 this.db.setup(this.searchFilename);
                 break;
             case "elasticsearch":
-                // TODO: Add elastic search support
+                this.db = new ElasticSearchFramework();
+                this.db.setup(this.searchFilename);
                 break;
             default:
                 System.out.println("Framework not supported");
