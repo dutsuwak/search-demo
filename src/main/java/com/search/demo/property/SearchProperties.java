@@ -2,7 +2,7 @@ package com.search.demo.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "file")
+@ConfigurationProperties(prefix = "config")
 public class SearchProperties {
     private String searchFilename;
     private String searchFramework;
