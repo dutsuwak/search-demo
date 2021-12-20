@@ -67,6 +67,13 @@ public class CSVSearchFramework implements iSearchFramework {
             }
         }
 
+        /* Exact movie title was not found suggest one */
+        for(Movie movie : this.movies){
+            if(movie.getName().contains(title)){
+                return movie;
+            }
+        }
+
         retMovie.setName("Not found.");
 
         return retMovie;
