@@ -113,9 +113,9 @@ public class SearchService {
         return resource;
     }
 
-    public Resource searchByRate(int low, int high) {
+    public Resource searchByRate(int low, int high, String genre) {
 
-        List<Movie> movies = this.db.searchByRate(low, high);
+        List<Movie> movies = this.db.searchByRate(low, high, genre);
 
         JSONObject jsonDict = new JSONObject();
 

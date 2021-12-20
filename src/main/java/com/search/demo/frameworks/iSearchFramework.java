@@ -33,7 +33,7 @@ public interface iSearchFramework {
      * @param low lower range including this value
      * @param high higher range excluding this value
      */
-    List<Movie> searchByRate(int low, int high);
+    List<Movie> searchByRate(int low, int high, String genre);
 
     /**
      * Provides the information by the matching genre of the movie

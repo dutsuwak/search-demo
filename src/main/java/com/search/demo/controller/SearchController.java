@@ -40,9 +40,10 @@ public class SearchController {
                 .body(resource);
     }
 
-    @GetMapping("/searchByRate/{low:.+}/{high:.+}")
-    public ResponseEntity<Resource> searchByGenre(@PathVariable String low, @PathVariable String high, HttpServletRequest request) {
-        Resource resource = searchService.searchByRate(Integer.parseInt(low), Integer.parseInt(high));
+    @GetMapping("/searchByRate/{low:.+}/{high:.+}/{genre:.+}")
+    public ResponseEntity<Resource> searchByGenre(@PathVariable String low, @PathVariable String high,
+                                                  @PathVariable String genre, HttpServletRequest request) {
+        Resource resource = searchService.searchByRate(Integer.parseInt(low), Integer.parseInt(high), genre);
         String contentType = "text/html";
 
         return ResponseEntity.ok()
