@@ -83,6 +83,12 @@ public class CSVSearchFramework implements iSearchFramework {
     public List<Movie> searchByGenre(String genre){
         List<Movie> mlist = new ArrayList<Movie>();
 
+        for(Movie movie : this.movies){
+            if(movie.getGenre().contains(genre)){
+                mlist.add(movie);
+            }
+        }
+
         return mlist;
     };
 }

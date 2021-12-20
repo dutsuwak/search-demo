@@ -22,11 +22,24 @@ public class SearchController {
         System.out.println("Init");
     }
 
-    //@GetMapping("/downloadFile/{titleName:.+}")
-    @GetMapping("/search/{titleName:.+}")
+    @GetMapping("/searchByTitle/{titleName:.+}")
     public ResponseEntity<Resource> searchByTitle(@PathVariable String titleName, HttpServletRequest request) {
         // Load file as Resource
         Resource resource = searchService.searchByTitle(titleName);
+
+        // Determine file's content type
+        String contentType = "text/html";
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "text/html; \"" + resource.toString() + "\"")
+                .body(resource);
+    }
+
+    @GetMapping("/searchByGenre/{genreName:.+}")
+    public ResponseEntity<Resource> searchByGenre(@PathVariable String genreName, HttpServletRequest request) {
+        // Load file as Resource
+        Resource resource = searchService.searchByGenre(genreName);
 
         // Determine file's content type
         String contentType = "text/html";

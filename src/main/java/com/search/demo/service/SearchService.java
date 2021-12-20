@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 @Service
 public class SearchService {
@@ -64,8 +65,49 @@ public class SearchService {
             e.printStackTrace();
         }
 
-        //InputStream targetStream = new ByteArrayInputStream(initialString.getBytes());
         InputStream targetStream = new ByteArrayInputStream(jsonObj.toString().getBytes());
+
+        Resource resource = new InputStreamResource(targetStream);
+        return resource;
+    }
+
+    public Resource searchByGenre(String genre) {
+
+        List<Movie> movies = this.db.searchByGenre(genre);
+
+        JSONObject jsonDict = new JSONObject();
+
+        int movieID = 0;
+        for(Movie mv : movies){
+            JSONObject jsonObj = new JSONObject();
+            try {
+                jsonObj.put("Name", mv.getName());
+                jsonObj.put("Date", mv.getYear());
+                jsonObj.put("Rate", mv.getRate());
+                jsonObj.put("Votes", mv.getVotes());
+                jsonObj.put("Genre", mv.getGenre());
+                jsonObj.put("Duration", mv.getDuration());
+                jsonObj.put("Type", mv.getType());
+                jsonObj.put("Certificate", mv.getCertificate());
+                jsonObj.put("Episodes", mv.getEpisodes());
+                jsonObj.put("Nudity", mv.getNudity());
+                jsonObj.put("Violence", mv.getViolence());
+                jsonObj.put("Profanity", mv.getProfanity());
+                jsonObj.put("Alcohol", mv.getAlcohol());
+                jsonObj.put("Frightening", mv.getFrightening());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonDict.put(String.valueOf(movieID), jsonObj);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            movieID++;
+        }
+
+        InputStream targetStream = new ByteArrayInputStream(jsonDict.toString().getBytes());
 
         Resource resource = new InputStreamResource(targetStream);
         return resource;
